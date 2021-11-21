@@ -1,4 +1,4 @@
-# UksivtScheduler_Mobile
+# Actual scheduler
 
 Earlier it's been only a basement.
 Now app really show schedule on UI.
