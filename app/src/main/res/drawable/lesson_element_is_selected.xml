@@ -1,0 +1,18 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<!-- Селектор, определяющий фон элементов списка для разных состояний. -->
+<selector xmlns:android = "http://schemas.android.com/apk/res/android">
+	<item
+	android:drawable = "@drawable/selected_gradient_background"
+	android:state_pressed = "false"
+	android:state_selected = "true"/>
+
+	<item
+	android:drawable = "@drawable/light_gradient_background"
+	android:state_pressed = "false"
+	android:state_selected = "false"/>
+
+	<item
+	android:drawable = "@drawable/dark_gradient_background"
+	android:state_pressed = "true"/>
+</selector>

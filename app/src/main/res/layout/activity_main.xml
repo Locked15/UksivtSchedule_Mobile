@@ -1,0 +1,136 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android = "http://schemas.android.com/apk/res/android"
+xmlns:app = "http://schemas.android.com/apk/res-auto"
+xmlns:tools = "http://schemas.android.com/tools"
+android:layout_width = "match_parent"
+android:layout_height = "match_parent"
+tools:context = ".activities.MainActivity">
+	<!-- region Область: Заголовок. -->
+	<TextView
+	android:id = "@+id/main_header"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content"
+	android:fontFamily = "georgia"
+	android:gravity = "center"
+	android:text = "@string/application_greeting"
+	android:textSize = "@dimen/standard_text_size"
+	app:layout_constraintEnd_toEndOf = "parent"
+	app:layout_constraintHorizontal_bias = "0.0"
+	app:layout_constraintLeft_toLeftOf = "parent"
+	app:layout_constraintRight_toRightOf = "parent"
+	app:layout_constraintStart_toStartOf = "parent"
+	app:layout_constraintTop_toTopOf = "parent"/>
+	<!-- endregion -->
+
+	<!-- region Область: Список направлений. -->
+	<ScrollView
+	android:layout_width = "match_parent"
+	android:layout_height = "0dp"
+	android:background = "@drawable/elements_divider"
+	android:fillViewport = "true"
+	app:layout_constraintBottom_toTopOf = "@id/main_footer"
+	app:layout_constraintTop_toBottomOf = "@id/main_header">
+		<LinearLayout
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:orientation = "vertical"
+		android:padding = "10dp">
+			<!-- Общеобразовательное. -->
+			<Button
+			android:id = "@+id/general_course_button"
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "2"
+			android:backgroundTint = "@color/main_gray"
+			android:fontFamily = "georgia"
+			android:onClick = "oneOfButtonsAreClicked"
+			android:text = "@string/general_course"
+			android:textSize = "@dimen/standard_button_text_size"/>
+
+			<Space
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "1"/>
+
+			<!-- Экономика и ЗИО. -->
+			<Button
+			android:id = "@+id/economy_course_button"
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "2"
+			android:backgroundTint = "@color/main_gray"
+			android:fontFamily = "georgia"
+			android:onClick = "oneOfButtonsAreClicked"
+			android:text = "@string/economy_course"
+			android:textSize = "@dimen/standard_button_text_size"/>
+
+			<Space
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "1"/>
+
+			<!-- Право. -->
+			<Button
+			android:id = "@+id/law_course_button"
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "2"
+			android:backgroundTint = "@color/main_gray"
+			android:fontFamily = "georgia"
+			android:onClick = "oneOfButtonsAreClicked"
+			android:text = "@string/law_course"
+			android:textSize = "@dimen/standard_button_text_size"/>
+
+			<Space
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "1"/>
+
+			<!-- Вычислительная техника. -->
+			<Button
+			android:id = "@+id/technical_course_button"
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "2"
+			android:backgroundTint = "@color/main_gray"
+			android:fontFamily = "georgia"
+			android:onClick = "oneOfButtonsAreClicked"
+			android:text = "@string/technical_course"
+			android:textSize = "@dimen/standard_button_text_size"/>
+
+			<Space
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "1"/>
+
+			<!-- Информатика и Программирование. -->
+			<Button
+			android:id = "@+id/programming_course_button"
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "2"
+			android:backgroundTint = "@color/main_gray"
+			android:fontFamily = "georgia"
+			android:onClick = "oneOfButtonsAreClicked"
+			android:text = "@string/informatics_course"
+			android:textSize = "@dimen/standard_button_text_size"/>
+		</LinearLayout>
+	</ScrollView>
+	<!-- endregion -->
+
+	<!-- region Область: Подсказка. -->
+	<TextView
+	android:id = "@+id/main_footer"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content"
+	android:fontFamily = "georgia"
+	android:gravity = "center"
+	android:text = "@string/application_main_tip"
+	android:textSize = "@dimen/standard_text_size"
+	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintLeft_toLeftOf = "parent"
+	app:layout_constraintRight_toRightOf = "parent"/>
+	<!-- endregion -->
+</androidx.constraintlayout.widget.ConstraintLayout>

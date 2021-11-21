@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<resources>
+	<dimen name = "standard_button_text_size">18sp</dimen>
+
+	<dimen name = "small_button_text_size">12sp</dimen>
+
+	<dimen name = "standard_text_size">36sp</dimen>
+
+	<dimen name = "small_text_size">18sp</dimen>
+
+	<dimen name = "big_text_size">48sp</dimen>
+
+	<dimen name = "lessons_divider_height">15dp</dimen>
+</resources>

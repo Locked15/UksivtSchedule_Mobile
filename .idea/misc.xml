@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/clear_elements_divider.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/dark_gradient_background.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/elements_divider.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/ic_launcher_background.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/lesson_element_divider.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/lesson_element_is_selected.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/lessons_elements_divider.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/light_gradient_background.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/drawable/selected_gradient_background.xml" value="0.38385416666666666" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/layout/activity_day_selector.xml" value="0.36770833333333336" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/layout/activity_groups.xml" value="0.36770833333333336" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/layout/activity_main.xml" value="0.36770833333333336" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/layout/activity_schedule_viewer.xml" value="0.36770833333333336" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/layout/groups_activity.xml" value="0.36770833333333336" />
+        <entry key="..\:/Projects/Uksivt_Scheduler_(Mobile)/app/src/main/res/layout/lessons_element.xml" value="0.36770833333333336" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<resources>
+	<string name = "app_name">Расписание Уксивт</string>
+	<string name = "general_course">Общеобразовательное Отделение</string>
+	<string name = "technical_course">Отделение Вычислительной Техники</string>
+	<string name = "economy_course">Отделение Экономики и ЗИО</string>
+	<string name = "law_course">Отделение Права</string>
+	<string name = "informatics_course">Отделение Информатики и Программирования</string>
+	<string name = "e_group_name">Э</string>
+	<string name = "ue_group_name">уЭ</string>
+	<string name = "ul_group_name">уЛ</string>
+	<string name = "zio_group_name">ЗИО</string>
+	<string name = "bd_group_name">БД</string>
+	<string name = "is_group_name">ИС</string>
+	<string name = "l_group_name">Л</string>
+	<string name = "oib_group_name">ОИБ</string>
+	<string name = "p_group_name">П</string>
+	<string name = "pd_group_name">ПД</string>
+	<string name = "po_group_name">ПО</string>
+	<string name = "psa_group_name">ПСА</string>
+	<string name = "sa_group_name">СА</string>
+	<string name = "web_group_name">ВЕБ</string>
+	<string name = "ksk_group_name">КСК</string>
+	<string name = "uksk_group_name">уКСК</string>
+	<string name = "application_greeting">Приветствуем тебя!</string>
+	<string name = "application_main_tip">Пожалуйста, выбери направление твоей группы.</string>
+	<string name = "error_occurred">Обнаружена ошибка.</string>
+	<string name = "groups_tip">Пожалуйста, выбери свою группу в списке ниже.</string>
+	<string name = "days_tip">Пожалуйста, выбери день для получения расписания.</string>
+	<string name = "day_second_tip">Если для выбранного дня не будут обнаружены замены, будет выведено стандартное расписание.</string>
+	<string name = "days_monday">Понедельник</string>
+	<string name = "days_tuesday">Вторник</string>
+	<string name = "days_wednesday">Среда</string>
+	<string name = "days_thursday">Четверг</string>
+	<string name = "days_friday">Пятница</string>
+	<string name = "days_saturday">Суббота</string>
+	<string name = "days_sunday">Воскресенье</string>
+	<string name = "changes_file_error">Ошибка при сканировании документа.</string>
+	<string name = "changes_not_found">Невозможно получить замены для выбранного дня.</string>
+	<string name = "server_unavailable">Сервер недоступен.</string>
+	<string name = "connection_error">Не удалось подключиться к серверу замен.</string>
+	<string name = "current_day_is">"Текущий День: "</string>
+	<string name = "tip_lesson_name">Пара:</string>
+	<string name = "tip_lesson_teacher">Преподаватель:</string>
+	<string name = "tip_lesson_place">Кабинет:</string>
+</resources>
