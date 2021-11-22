@@ -86,7 +86,7 @@ public class DaySelectorActivity extends AppCompatActivity
      */
     public void oneOfButtonsAreClicked(View view)
     {
-        Days selectedDay = possibleDaysToSelect.get((Button)view);
+        Days selectedDay = possibleDaysToSelect.get(view);
         
         if (selectedDay == null)
         {

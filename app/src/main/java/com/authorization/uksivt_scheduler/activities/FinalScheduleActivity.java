@@ -9,12 +9,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.authorization.uksivt_scheduler.R;
+import com.authorization.uksivt_scheduler.change_elements.MonthChanges;
 import com.authorization.uksivt_scheduler.custom_views.LessonListAdapter;
+import com.authorization.uksivt_scheduler.data_getter.DataGetter;
 import com.authorization.uksivt_scheduler.data_getter.StandardScheduler;
+import com.authorization.uksivt_scheduler.data_reader.DataReader;
 import com.authorization.uksivt_scheduler.schedule_elements.DaySchedule;
 import com.authorization.uksivt_scheduler.schedule_elements.Days;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.concurrent.Executors;
 
 /**
  * Класс, определяющий логику для "activity_schedule_viewer".
@@ -59,20 +65,52 @@ public class FinalScheduleActivity extends AppCompatActivity
             schedule = DaySchedule.getEmptySchedule();
         }
         
-        lessonsList = (ListView)findViewById(R.id.schedule_lessons_list);
-        insertLessonsToActivity(schedule);
+        lessonsList = findViewById(R.id.schedule_lessons_list);
+
+        //region ! Вызов функции приведет к вызову исключения. !
+        // initializeChanges();
+        //endregion
+
+        insertLessonsToActivity();
     }
     //endregion
     
     //region Область: Методы.
     /**
-     * Метод для вставки расписания в окно.
-     *
-     * @param schedule Расписание, которое надо вставить.
+     * Метод для получения замен для указанного дня и применения их к расписанию.
      */
-    private void insertLessonsToActivity(DaySchedule schedule)
+    private void initializeChanges()
     {
-        TextView header = (TextView)findViewById(R.id.schedule_day_header);
+        //В Android нельзя обращаться к сети в основном потоке.
+        Thread thread = new Thread(new Runnable()
+        {
+            /**
+             * Асинхронная функция, нужная для обращения к сети.
+             */
+            @Override
+            public void run()
+            {
+                File changeFile = new File(getCacheDir() + "/Prog.docx");
+                DataGetter getter = new DataGetter();
+                MonthChanges changes = getter.getAvailableNodes().get(0);
+                
+                getter.downloadFileWithChanges(getter.getDownloadableLinkToChangesFile
+                (changes.tryToFindElementByNameOfDay(schedule.day).getLinkToDocument()), changeFile.getAbsolutePath());
+
+                //Выброс искючения:
+                DataReader reader = new DataReader(changeFile.getAbsolutePath());
+            }
+        });
+
+        thread.start();
+    }
+
+    /**
+     * Метод для вставки расписания в окно.
+     */
+    private void insertLessonsToActivity()
+    {
+        TextView header = findViewById(R.id.schedule_day_header);
         header.setText(String.format("%s%s", getString(R.string.current_day_is),
         Days.toString(schedule.day)));
         

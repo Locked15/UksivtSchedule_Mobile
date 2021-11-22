@@ -38,7 +38,7 @@
 	<string name = "changes_not_found">Can\'t find changes to selected day.</string>
 	<string name = "server_unavailable">Server is unavailable.</string>
 	<string name = "connection_error">Connection to changes server is failed.</string>
-	<string name = "current_day_is">Current Day:</string>
+	<string name = "current_day_is">"Current Day: "</string>
 	<string name = "tip_lesson_name">Lesson:</string>
 	<string name = "tip_lesson_teacher">Teacher:</string>
 	<string name = "tip_lesson_place">Place:</string>

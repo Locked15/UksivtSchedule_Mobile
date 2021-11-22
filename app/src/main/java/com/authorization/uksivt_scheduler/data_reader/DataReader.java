@@ -44,6 +44,8 @@ public class DataReader
     //region Область: Конструкторы класса.
     /**
      * Конструктор класса.
+     *
+     * @param pathToChangingFile Путь к файлу с заменами.
      */
     public DataReader(String pathToChangingFile)
     {
