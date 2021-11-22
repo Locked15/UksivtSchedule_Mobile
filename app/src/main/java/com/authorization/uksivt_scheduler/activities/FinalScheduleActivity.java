@@ -42,7 +42,6 @@ public class FinalScheduleActivity extends AppCompatActivity
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
-        //TODO: Реализовать получение замен.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_viewer);
         
