@@ -186,6 +186,7 @@ public class DataGetter
                 for (int j = 0; j < tableRows.size(); j++)
                 {
                     Integer dayCounter = 0;
+                    Boolean firstIteration = true;
                     Element currentRow = tableRows.get(j);
 
                     //В первой строке содержатся ненужные значения, пропускаем:
@@ -202,6 +203,12 @@ public class DataGetter
                         //... не на понедельник, то некоторое количество ячеек также будет пустым.
                         if (tableCell.text().equals(NON_BREAKING_SPACE))
                         {
+                            if (!firstIteration)
+                            {
+                                dayCounter++;
+                            }
+                            
+                            firstIteration = false;
                             continue;
                         }
 
