@@ -28,6 +28,11 @@ public class DaySelectorActivity extends AppCompatActivity
     private String path;
     
     /**
+     * Внутреннее поле, содержащее название подпапки с принадлежностью группы.
+     */
+    private String subFolder;
+    
+    /**
      * Внутреннее поле, содержащее название нужной группы.
      */
     private String groupName;
@@ -72,7 +77,7 @@ public class DaySelectorActivity extends AppCompatActivity
         
         //region Подобласть: Инициализация полей группы.
         path = getIntent().getStringExtra("folder");
-        
+        subFolder = getIntent().getStringExtra("subFolder");
         groupName = getIntent().getStringExtra("group");
         //endregion
     }
@@ -100,6 +105,7 @@ public class DaySelectorActivity extends AppCompatActivity
         //... но, как я думаю, здесь в этом нет особого смысла.
         Intent newWindow = new Intent(this, FinalScheduleActivity.class);
         newWindow.putExtra("folder", path);
+        newWindow.putExtra("subFolder", subFolder);
         newWindow.putExtra("group", groupName);
         newWindow.putExtra("day", Days.toString(selectedDay));
         

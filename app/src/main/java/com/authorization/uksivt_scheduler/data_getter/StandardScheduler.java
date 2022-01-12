@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -40,17 +41,37 @@ public class StandardScheduler
     
     //region Область: Методы.
     /**
+     * Метод для получения списка подпапок для указанного направления группы.
+     *
+     * @param branch Выбранное направление.
+     *
+     * @return Список подпапок по группам.
+     */
+    public List<String> getGroupsInSubFolder(String branch)
+    {
+        try
+        {
+            return Arrays.asList(manager.list(branch));
+        }
+    
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+    
+    /**
      * Метод, нужный для получения списка групп в указанной директории.
      *
      * @param folder Название директории для сканирования.
      *
      * @return Список групп.
      */
-    public List<String> getGroupsWithFolder(String folder)
+    public List<String> getGroupsWithFolder(String branch, String folder)
     {
         try
         {
-            return Arrays.asList(manager.list(folder));
+            return Arrays.asList(manager.list(branch + '/' + folder));
         }
         
         catch (Exception e)
@@ -62,6 +83,7 @@ public class StandardScheduler
     /**
      * Метод для получения оригинального расписания.
      *
+     * @param branch Директория выбранного отделения.
      * @param folder    Директория, в которой находится расписание нужной группы.
      * @param groupName Название нужной группы.
      *
@@ -69,17 +91,18 @@ public class StandardScheduler
      *
      * @throws IOException При считывании расписания произошла ошибка.
      */
-    public WeekSchedule getSchedule(String folder, String groupName) throws IOException
+    public WeekSchedule getSchedule(String branch, String folder, String groupName) throws IOException
     {
         ObjectMapper serializer = new ObjectMapper();
-       
-        return serializer.readValue(manager.open(getFullPath(folder, groupName)),
+        
+        return serializer.readValue(manager.open(getFullPath(branch, folder, groupName)),
         WeekSchedule.class);
     }
     
     /**
      * Метод для получения оригинального расписания на один день.
      *
+     * @param branch Директория выбранного направления.
      * @param folder Директория, в которой находится расписание нужной группы.
      * @param groupName Название нужной группыю
      * @param day Нужный день.
@@ -88,9 +111,9 @@ public class StandardScheduler
      *
      * @throws IOException При считывании расписания произошла ошибка.
      */
-    public DaySchedule getDaySchedule(String folder, String groupName, Days day) throws IOException
+    public DaySchedule getDaySchedule(String branch, String folder, String groupName, Days day) throws IOException
     {
-        WeekSchedule temp = getSchedule(folder, groupName);
+        WeekSchedule temp = getSchedule(branch, folder, groupName);
         
         return temp.getDays().get(Days.getIndexByValue(day));
     }
@@ -100,14 +123,15 @@ public class StandardScheduler
     /**
      * Метод для получения полного пути к файлу с расписанием.
      *
-     * @param folder Направление.
+     * @param branch Отделение.
+     * @param folder Подпапка группы.
      * @param group Название группы.
      *
      * @return Полный путь к файлу с расписанием.
      */
-    private String getFullPath(String folder, String group)
+    private String getFullPath(String branch, String folder, String group)
     {
-        return folder + '/' + group + ".json";
+        return String.format("%s/%s/%s.json", branch, folder, group);
     }
     //endregion
 }

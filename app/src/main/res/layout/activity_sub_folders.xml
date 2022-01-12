@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android = "http://schemas.android.com/apk/res/android"
+xmlns:app = "http://schemas.android.com/apk/res-auto"
+android:layout_width = "match_parent"
+android:layout_height = "match_parent">
+	<!-- Заголовок. -->
+	<TextView
+	android:id = "@+id/sub_folders_header"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content"
+	android:fontFamily = "georgia"
+	android:gravity = "center"
+	android:text = "@string/sub_folders_header"
+	android:textSize = "@dimen/standard_text_size"
+	app:layout_constraintLeft_toLeftOf = "parent"
+	app:layout_constraintRight_toRightOf = "parent"
+	app:layout_constraintTop_toTopOf = "parent"/>
+
+	<ScrollView
+	android:layout_width = "match_parent"
+	android:layout_height = "0dp"
+	android:background = "@drawable/elements_divider"
+	android:fillViewport = "true"
+	android:layout_marginTop = "5dp"
+	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintLeft_toLeftOf = "parent"
+	app:layout_constraintRight_toRightOf = "parent"
+	app:layout_constraintTop_toBottomOf = "@id/sub_folders_header">
+		<!-- Элементы в данный контейнер будут добавляться программно. -->
+		<LinearLayout
+		android:id = "@+id/sub_folders_list"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:orientation = "vertical"/>
+	</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

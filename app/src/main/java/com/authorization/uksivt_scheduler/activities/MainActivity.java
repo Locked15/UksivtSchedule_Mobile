@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
         }
         //endregion
         
-        Intent newWindow = new Intent(this, GroupsActivity.class);
+        Intent newWindow = new Intent(this, SubFoldersActivity.class);
         newWindow.putExtra("course_name", course);
         
         startActivity(newWindow);

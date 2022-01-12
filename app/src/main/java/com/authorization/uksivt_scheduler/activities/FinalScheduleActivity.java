@@ -56,8 +56,8 @@ public class FinalScheduleActivity extends AppCompatActivity
         try
         {
             schedule = new StandardScheduler(this).getDaySchedule
-            (parent.getStringExtra("folder"), parent.getStringExtra("group"),
-            Days.fromString(parent.getStringExtra("day")));
+            (parent.getStringExtra("folder"), parent.getStringExtra("subFolder"),
+            parent.getStringExtra("group"), Days.fromString(parent.getStringExtra("day")));
         }
         
         catch (IOException e)
@@ -68,7 +68,9 @@ public class FinalScheduleActivity extends AppCompatActivity
         lessonsList = findViewById(R.id.schedule_lessons_list);
 
         //region ! Вызов функции приведет к вызову исключения. !
+        
         // initializeChanges();
+        
         //endregion
 
         insertLessonsToActivity();

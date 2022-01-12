@@ -37,7 +37,12 @@ public class GroupsActivity extends AppCompatActivity
     private String course;
     
     /**
-     * Поле, содержащее экземпляр класса "StandardScheduler", нужный для получения расписания.
+     * Поле, содержащее текущую выбранную подпапку групп.
+     */
+    private String subFolder;
+    
+    /**
+     * Поле, содержащее экземпляр класса "StandardScheduler", нужный для получения списка групп.
      */
     private StandardScheduler standardScheduler;
     //endregion
@@ -55,6 +60,7 @@ public class GroupsActivity extends AppCompatActivity
         setContentView(R.layout.activity_groups);
         
         course = getIntent().getStringExtra("course_name");
+        subFolder = getIntent().getStringExtra("subFolder_name");
         standardScheduler = new StandardScheduler(this);
         
         insertButtonsToLayout(getGroupsListFromCourse());
@@ -69,7 +75,7 @@ public class GroupsActivity extends AppCompatActivity
      */
     private List<String> getGroupsListFromCourse()
     {
-        List<String> groups = standardScheduler.getGroupsWithFolder(course);
+        List<String> groups = standardScheduler.getGroupsWithFolder(course, subFolder);
         
         for (int i = 0; i < groups.size(); i++)
         {
@@ -105,6 +111,7 @@ public class GroupsActivity extends AppCompatActivity
                 {
                     Intent newWindow = new Intent(view.getContext(), DaySelectorActivity.class);
                     newWindow.putExtra("folder", course);
+                    newWindow.putExtra("subFolder", subFolder);
                     newWindow.putExtra("group", ((Button)view).getText());
                     
                     startActivity(newWindow);

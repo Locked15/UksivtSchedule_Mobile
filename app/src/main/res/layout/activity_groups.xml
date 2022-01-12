@@ -10,22 +10,22 @@ android:layout_height = "match_parent">
 	android:id = "@+id/groups_header"
 	android:layout_width = "match_parent"
 	android:layout_height = "wrap_content"
+	android:background = "@drawable/clear_elements_divider"
 	android:fontFamily = "georgia"
 	android:gravity = "center"
 	android:text = "@string/groups_tip"
 	android:textSize = "@dimen/standard_text_size"
 	app:layout_constraintLeft_toLeftOf = "parent"
 	app:layout_constraintRight_toRightOf = "parent"
-	app:layout_constraintTop_toTopOf = "parent"
-	android:background="@drawable/clear_elements_divider"/>
+	app:layout_constraintTop_toTopOf = "parent"/>
 
 	<ScrollView
 	android:layout_width = "match_parent"
 	android:layout_height = "0dp"
+	android:background = "@drawable/elements_divider"
 	android:fillViewport = "true"
 	app:layout_constraintBottom_toBottomOf = "parent"
 	app:layout_constraintLeft_toLeftOf = "parent"
-	android:background="@drawable/elements_divider"
 	app:layout_constraintRight_toRightOf = "parent"
 	app:layout_constraintTop_toBottomOf = "@id/groups_header">
 		<!-- Элементы в данный контейнер будут добавляться программно. -->

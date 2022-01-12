@@ -25,6 +25,14 @@ package = "com.authorization.uksivt_scheduler">
 		</activity>
 
 		<activity
+		android:name = ".activities.SubFoldersActivity"
+		android:exported = "true">
+			<intent-filter>
+				<category android:name = "android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+
+		<activity
 		android:name = ".activities.GroupsActivity"
 		android:exported = "true">
 			<intent-filter>
