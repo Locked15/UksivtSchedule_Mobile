@@ -43,4 +43,10 @@
 	<string name = "tip_lesson_teacher">Teacher:</string>
 	<string name = "tip_lesson_place">Place:</string>
 	<string name = "sub_folders_header">Please, select affiliation of your group:</string>
+	<string name = "ok">OK.</string>
+	<string name = "changes_receiving_begin">Changes receiving begins. \nIt can take some time. Please, be patient.</string>
+	<string name = "there_is_no_changes">No available changes for current date/group.</string>
+	<string name = "changes_received_succesfully">Changes receiving complete.</string>
+	<string name = "changes_get_exception">Can\'t get changes.\n Error occurred.</string>
+	<string name = "changes_receiving_interrupted">Process interrupted.</string>
 </resources>
