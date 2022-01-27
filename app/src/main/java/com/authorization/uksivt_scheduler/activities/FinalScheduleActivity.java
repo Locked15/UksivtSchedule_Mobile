@@ -102,7 +102,7 @@ public class FinalScheduleActivity extends AppCompatActivity
                     });
                 }
             }
-
+            
             catch (InterruptedIOException exception)
             {
                 runOnUiThread(() -> Toast.makeText(this,
