@@ -6,6 +6,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,9 @@ import com.authorization.uksivt_scheduler.data_getter.ScheduleApiConnector;
 import com.authorization.uksivt_scheduler.data_getter.StandardScheduler;
 import com.authorization.uksivt_scheduler.schedule_elements.DaySchedule;
 import com.authorization.uksivt_scheduler.schedule_elements.Days;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -58,6 +62,27 @@ public class FinalScheduleActivity extends AppCompatActivity
         setContentView(R.layout.activity_schedule_viewer);
         Intent parent = getIntent();
         
+        //Обработка смены ориентации экрана.
+        if (savedInstanceState != null)
+        {
+            try
+            {
+                ObjectMapper serializer = new ObjectMapper();
+                serializer.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_VALUES, true);
+                
+                lessonsList = findViewById(R.id.schedule_lessons_list);
+                schedule = serializer.readValue(savedInstanceState.getString("schedule"), DaySchedule.class);
+                
+                insertLessonsToActivity();
+                return;
+            }
+            
+            catch (Exception exception)
+            {
+                exception.printStackTrace();
+            }
+        }
+        
         try
         {
             schedule = new StandardScheduler(this).getDaySchedule
@@ -95,7 +120,7 @@ public class FinalScheduleActivity extends AppCompatActivity
                     runOnUiThread(() ->
                     {
                         Toast.makeText(this,
-                        getString(R.string.changes_received_succesfully), Toast.LENGTH_SHORT).show();
+                        getString(R.string.changes_received_successfully), Toast.LENGTH_SHORT).show();
                         
                         schedule = newSchedule;
                         insertLessonsToActivity();
@@ -130,7 +155,36 @@ public class FinalScheduleActivity extends AppCompatActivity
     {
         super.onPause();
         
-        changesThread.interrupt();
+        //Так как смена ориентации уничтожит поток, необходимо это обработать:
+        if (changesThread != null)
+        {
+            changesThread.interrupt();
+        }
+    }
+    
+    /**
+     * Событие, происходящее в момент уничтожения окна.
+     * <br/>
+     * Нужно для сохранения данных в Bundle.
+     *
+     * @param outState Сохраняемое состояние.
+     */
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        ObjectMapper serializer = new ObjectMapper();
+        serializer.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_VALUES, true);
+    
+        try
+        {
+            outState.putString("schedule", serializer.writeValueAsString(schedule));
+        }
+        
+        catch (JsonProcessingException e)
+        {
+            e.printStackTrace();
+        }
     }
     //endregion
     

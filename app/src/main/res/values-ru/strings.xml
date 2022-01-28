@@ -46,9 +46,10 @@
 	<string name = "tip_lesson_place">Кабинет:</string>
 	<string name = "sub_folders_header">Пожалуйста, укажи принадлежность нужной группы:</string>
 	<string name = "ok">ОК.</string>
-	<string name = "changes_receiving_begin">Начато получение замен. \nЭто может занять некоторое время. Пожалуйста, будьте терпеливы.</string>
+	<string name = "changes_receiving_begin">Начато получение замен. \nСмените ориентацию,
+		чтобы отменить получение замен.</string>
 	<string name = "there_is_no_changes">Нет доступных замен для текущей даты/группы.</string>
-	<string name = "changes_received_succesfully">Получение замен выполнено.</string>
+	<string name = "changes_received_successfully">Получение замен выполнено.</string>
 	<string name = "changes_get_exception">Не удалось получить замены. \nПроизошла ошибка.</string>
 	<string name = "changes_receiving_interrupted">Процесс остановлен.</string>
 </resources>
