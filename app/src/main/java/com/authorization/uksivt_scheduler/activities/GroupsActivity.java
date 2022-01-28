@@ -2,26 +2,18 @@ package com.authorization.uksivt_scheduler.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RemoteViews;
 import android.widget.Space;
-import android.widget.TableRow;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.authorization.uksivt_scheduler.R;
 import com.authorization.uksivt_scheduler.data_getter.StandardScheduler;
-import com.authorization.uksivt_scheduler.schedule_elements.WeekSchedule;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
