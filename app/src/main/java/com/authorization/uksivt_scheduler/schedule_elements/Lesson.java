@@ -25,6 +25,11 @@ public class Lesson implements Comparable<Lesson>
      * Внутреннее поле, содержащее название кабинета, где будет пара.
      */
     private String place;
+    
+    /**
+     * Внутреннее поле, отвечающее за то, что пара была изменена.
+     */
+    private Boolean lessonChanged = false;
     //endregion
     
     //region Область: Get-Свойства.
@@ -66,6 +71,16 @@ public class Lesson implements Comparable<Lesson>
     public String getPlace()
     {
         return place;
+    }
+    
+    /**
+     * Метод для получения значения поля "lessonChanged".
+     *
+     * @return Значение поля.
+     */
+    public Boolean getLessonChanged()
+    {
+        return lessonChanged;
     }
     //endregion
     
@@ -109,6 +124,16 @@ public class Lesson implements Comparable<Lesson>
     {
         this.place = place;
     }
+    
+    /**
+     * Метод для установки свойства "lessonChanged".
+     *
+     * @param lessonChanged Новое значение поля.
+     */
+    public void setLessonChanged(Boolean lessonChanged)
+    {
+        this.lessonChanged = lessonChanged;
+    }
     //endregion
     
     //region Область: Конструкторы класса.
@@ -139,6 +164,7 @@ public class Lesson implements Comparable<Lesson>
      * @param number  Номер пары.
      * @param name    Название предмета.
      * @param teacher Преподаватель.
+     * @param place   Место проведения пары.
      */
     public Lesson(Integer number, String name, String teacher, String place)
     {
@@ -146,6 +172,24 @@ public class Lesson implements Comparable<Lesson>
         this.name = name;
         this.teacher = teacher;
         this.place = place;
+    }
+    
+    /**
+     * Конструктор класса.
+     *
+     * @param number        Номер пары.
+     * @param name          Название предмета.
+     * @param teacher       Преподаватель.
+     * @param place         Место проведения пары.
+     * @param lessonChanged Изменялась ли пара.
+     */
+    public Lesson(Integer number, String name, String teacher, String place, Boolean lessonChanged)
+    {
+        this.number = number;
+        this.name = name;
+        this.teacher = teacher;
+        this.place = place;
+        this.lessonChanged = lessonChanged;
     }
     //endregion
     

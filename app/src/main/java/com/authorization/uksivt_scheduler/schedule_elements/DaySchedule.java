@@ -61,6 +61,8 @@ public class DaySchedule
     
         if (absoluteChanges)
         {
+            changes.forEach(lesson -> lesson.setLessonChanged(true));
+            
             //Чтобы избавиться от возможных проблем со ссылками в будущем, ...
             //... создаем новый объект:
             return new DaySchedule(day, fillEmptyLessons(changes));
@@ -89,6 +91,7 @@ public class DaySchedule
             }
             
             mergedSchedule.set(lessonIndex, change);
+            mergedSchedule.get(lessonIndex).setLessonChanged(true);
         }
         
         mergedSchedule.removeIf(element -> element.getName() == null);

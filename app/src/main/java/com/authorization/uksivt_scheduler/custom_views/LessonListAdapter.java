@@ -1,11 +1,14 @@
 package com.authorization.uksivt_scheduler.custom_views;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.authorization.uksivt_scheduler.R;
 import com.authorization.uksivt_scheduler.schedule_elements.DaySchedule;
@@ -125,10 +128,11 @@ public class LessonListAdapter extends BaseAdapter
             toReturn = inflater.inflate(R.layout.lessons_element, viewGroup, false);
             
             //region Подобласть: Инициализация значений "holder".
-            holder.number = (TextView)toReturn.findViewById(R.id.template_number);
-            holder.name = (TextView)toReturn.findViewById(R.id.template_name);
-            holder.teacher = (TextView)toReturn.findViewById(R.id.template_teacher);
-            holder.place = (TextView)toReturn.findViewById(R.id.template_place);
+            holder.background =toReturn.findViewById(R.id.template_background);
+            holder.number = toReturn.findViewById(R.id.template_number);
+            holder.name = toReturn.findViewById(R.id.template_name);
+            holder.teacher = toReturn.findViewById(R.id.template_teacher);
+            holder.place = toReturn.findViewById(R.id.template_place);
             //endregion
             
             toReturn.setTag(holder);
@@ -138,6 +142,9 @@ public class LessonListAdapter extends BaseAdapter
         data = lessons.get(i);
         
         //region Подобласть: Установка значений полей.
+        holder.background.setBackgroundColor(data.getLessonChanged() ?
+        Color.rgb(245,222,179) : Color.rgb(255, 255, 255));
+        
         holder.number.setText(data.getNumber().toString());
         holder.name.setText(data.getName());
         holder.teacher.setText(data.getTeacher());
@@ -154,6 +161,11 @@ public class LessonListAdapter extends BaseAdapter
      */
     private static class ViewHolder
     {
+        /**
+         * Поле, содержащее задний фон элемента.
+         */
+        private ConstraintLayout background;
+        
         /**
          * Поле, содержащее номер пары.
          */
