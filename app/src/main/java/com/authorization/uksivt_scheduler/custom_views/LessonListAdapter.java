@@ -128,7 +128,7 @@ public class LessonListAdapter extends BaseAdapter
             toReturn = inflater.inflate(R.layout.lessons_element, viewGroup, false);
             
             //region Подобласть: Инициализация значений "holder".
-            holder.background =toReturn.findViewById(R.id.template_background);
+            holder.background = toReturn.findViewById(R.id.template_background);
             holder.number = toReturn.findViewById(R.id.template_number);
             holder.name = toReturn.findViewById(R.id.template_name);
             holder.teacher = toReturn.findViewById(R.id.template_teacher);
@@ -143,7 +143,7 @@ public class LessonListAdapter extends BaseAdapter
         
         //region Подобласть: Установка значений полей.
         holder.background.setBackgroundColor(data.getLessonChanged() ?
-        Color.rgb(245,222,179) : Color.rgb(255, 255, 255));
+        Color.rgb(139,202,235) : Color.rgb(255, 255, 255));
         
         holder.number.setText(data.getNumber().toString());
         holder.name.setText(data.getName());
