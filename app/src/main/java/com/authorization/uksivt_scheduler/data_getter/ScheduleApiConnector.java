@@ -74,7 +74,7 @@ public class ScheduleApiConnector
     static
     {
         //region Подобласть: Инициализация "baseUrl'.
-        baseUrl = "https://scheduleapi20220126123653.azurewebsites.net";
+        baseUrl = "http://uksivtscheduleapi.azurewebsites.net";
         //endregion
         
         //region Подобласть: Инициализация "pathToDay".
@@ -105,6 +105,9 @@ public class ScheduleApiConnector
      */
     public ChangesOfDay getChanges() throws IOException
     {
+        String value = String.format(Locale.getDefault(),"%s%s%s%s%d&%s%s",
+        baseUrl, pathToDay, changesController, daySelector, dayInd, groupSelector, groupName);
+        
         URLConnection connection = new URL(String.format(Locale.getDefault(),"%s%s%s%s%d&%s%s",
         baseUrl, pathToDay, changesController, daySelector, dayInd, groupSelector, groupName)).openConnection();
         String result = IOUtils.toString(connection.getInputStream(), Charset.defaultCharset());
