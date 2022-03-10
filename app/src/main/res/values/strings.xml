@@ -3,7 +3,7 @@
 	<string name = "general_course">General Course</string>
 	<string name = "technical_course">Compute Technical Course</string>
 	<string name = "economy_course">Economy and Terrain Course</string>
-	<string name = "law_course">Rights Course</string>
+	<string name = "law_course">Law Course</string>
 	<string name = "informatics_course">Informatics and Programming Course</string>
 	<string name = "e_group_name">E</string>
 	<string name = "ue_group_name">uE</string>

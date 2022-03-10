@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ import com.authorization.uksivt_scheduler.R;
 import com.authorization.uksivt_scheduler.data_getter.ScheduleApiConnector;
 
 import org.joda.time.DateTime;
+
+import java.io.IOException;
 
 
 /**
@@ -32,7 +35,18 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // Элемент оптимизации использования API:
-        new Thread(() -> new ScheduleApiConnector(DateTime.now().dayOfWeek().get() - 1, "19П-3")).start();
+        new Thread(() ->
+        {
+            try
+            {
+                new ScheduleApiConnector(DateTime.now().dayOfWeek().get() - 1, "19П-3").getChanges();
+            }
+
+            catch (IOException e)
+            {
+                Log.println(Log.ERROR, "SchedulePreUploadError", e.getMessage());
+            }
+        }).start();
     }
     //endregion
     
