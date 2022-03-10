@@ -105,9 +105,6 @@ public class ScheduleApiConnector
      */
     public ChangesOfDay getChanges() throws IOException
     {
-        String value = String.format(Locale.getDefault(),"%s%s%s%s%d&%s%s",
-        baseUrl, pathToDay, changesController, daySelector, dayInd, groupSelector, groupName);
-        
         URLConnection connection = new URL(String.format(Locale.getDefault(),"%s%s%s%s%d&%s%s",
         baseUrl, pathToDay, changesController, daySelector, dayInd, groupSelector, groupName)).openConnection();
         String result = IOUtils.toString(connection.getInputStream(), Charset.defaultCharset());

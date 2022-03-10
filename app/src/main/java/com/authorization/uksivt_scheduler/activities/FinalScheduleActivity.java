@@ -23,6 +23,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -35,6 +38,13 @@ public class FinalScheduleActivity extends AppCompatActivity
      * Поле, содержащее расписание на день.
      */
     private DaySchedule schedule;
+    
+    /**
+     * Поле, содержащее замены на выбранный день.
+     * <br/>
+     * Нужно для возможности вывода информации о заменах.
+     */
+    private ChangesOfDay changes;
     
     /**
      * Поле, содержащее элемент, в который будут помещаться все пары.
@@ -109,7 +119,13 @@ public class FinalScheduleActivity extends AppCompatActivity
                 DaySchedule newSchedule = initializeChanges(parent.getStringExtra("group"),
                 Days.getIndexByValue(Days.fromString(parent.getStringExtra("day"))));
                 
-                if (newSchedule.equals(schedule))
+                if (!changes.getChangesFound())
+                {
+                    runOnUiThread(() -> Toast.makeText(this,
+                    getString(R.string.there_is_no_available_changes_file), Toast.LENGTH_SHORT).show());
+                }
+                
+                else if (newSchedule.equals(schedule))
                 {
                     runOnUiThread(() -> Toast.makeText(this,
                     getString(R.string.there_is_no_changes), Toast.LENGTH_SHORT).show());
@@ -138,6 +154,23 @@ public class FinalScheduleActivity extends AppCompatActivity
             {
                 runOnUiThread(() -> Toast.makeText(this,
                 getString(R.string.changes_get_exception), Toast.LENGTH_SHORT).show());
+            }
+    
+            try
+            {
+                TextView header = findViewById(R.id.schedule_day_header);
+                SimpleDateFormat formatter = new SimpleDateFormat("(dd.MM.yyyy!)", Locale.getDefault());
+                formatter.setTimeZone(TimeZone.getTimeZone("UTC+00:00"));
+                
+                runOnUiThread(() ->
+                    header.setText(String.format(Locale.getDefault(), "%s %s", header.getText(),
+                    formatter.format(changes.getChangesDate())))
+                );
+            }
+    
+            catch (NullPointerException e)
+            {
+                e.fillInStackTrace();
             }
         });
         
@@ -216,10 +249,11 @@ public class FinalScheduleActivity extends AppCompatActivity
     private DaySchedule initializeChanges(String groupName, Integer day) throws IOException
     {
         ScheduleApiConnector connector = new ScheduleApiConnector(day, groupName);
-        ChangesOfDay changes = connector.getChanges();
+        changes = connector.getChanges();
+        
         
         //Если замен нет, то нужно вернуть базовое расписание для корректного сравнения объектов.
-        if (changes.equals(ChangesOfDay.DefaultChanges))
+        if (changes.getNewLessons().size() == ChangesOfDay.DefaultChanges.getNewLessons().size())
         {
             return schedule;
         }

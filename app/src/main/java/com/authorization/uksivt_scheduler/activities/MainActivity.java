@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.authorization.uksivt_scheduler.R;
+import com.authorization.uksivt_scheduler.data_getter.ScheduleApiConnector;
+
+import org.joda.time.DateTime;
 
 
 /**
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Элемент оптимизации использования API:
+        new Thread(() -> new ScheduleApiConnector(DateTime.now().dayOfWeek().get() - 1, "19П-3")).start();
     }
     //endregion
     

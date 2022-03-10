@@ -48,8 +48,9 @@
 	<string name = "ok">ОК.</string>
 	<string name = "changes_receiving_begin">Начато получение замен. \nСмените ориентацию,
 		чтобы отменить процесс.</string>
-	<string name = "there_is_no_changes">Нет доступных замен для текущей даты/группы.</string>
+	<string name = "there_is_no_changes">Нет доступных замен для текущей группы.</string>
 	<string name = "changes_received_successfully">Получение замен выполнено.</string>
 	<string name = "changes_get_exception">Не удалось получить замены. \nПроизошла ошибка.</string>
 	<string name = "changes_receiving_interrupted">Процесс остановлен.</string>
+	<string name = "there_is_no_available_changes_file">Файл с заменами не обнаружен.</string>
 </resources>

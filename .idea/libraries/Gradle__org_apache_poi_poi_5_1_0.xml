@@ -6,6 +6,8 @@
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/5.1.0/146440db0ab4215f4a6c38f5529eccd0081b7a1b/poi-5.1.0-javadoc.jar!/" />
     </JAVADOC>
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/5.1.0/c92b27da260a7d9de8d75ade5a3caa30bddd98e0/poi-5.1.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

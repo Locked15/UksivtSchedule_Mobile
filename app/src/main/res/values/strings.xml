@@ -26,7 +26,7 @@
 	<string name = "error_occurred">Error detected.</string>
 	<string name = "groups_tip">Please, select you group in list below.</string>
 	<string name = "days_tip">Please, select day to get schedule.</string>
-	<string name = "day_second_tip">If no available changes will be detected to selected day, you get the original schedule.</string>
+	<string name = "day_second_tip">If no available changes will be detected to selected day, you will get the original schedule.</string>
 	<string name = "days_monday">Monday</string>
 	<string name = "days_tuesday">Tuesday</string>
 	<string name = "days_wednesday">Wednesday</string>
@@ -46,8 +46,9 @@
 	<string name = "ok">OK.</string>
 	<string name = "changes_receiving_begin">Changes receiving begins. \nChange orientation to
 		interrupt process.</string>
-	<string name = "there_is_no_changes">No available changes for current date/group.</string>
+	<string name = "there_is_no_changes">No available changes for group.</string>
 	<string name = "changes_received_successfully">Changes receiving complete.</string>
 	<string name = "changes_get_exception">Can\'t get changes.\n Error occurred.</string>
 	<string name = "changes_receiving_interrupted">Process interrupted.</string>
+	<string name = "there_is_no_available_changes_file">Can\'t find changes file.</string>
 </resources>
