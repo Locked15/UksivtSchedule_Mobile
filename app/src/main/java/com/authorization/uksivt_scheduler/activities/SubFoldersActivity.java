@@ -29,6 +29,7 @@ public class SubFoldersActivity extends AppCompatActivity
     //endregion
     
     //region Область: События.
+
     /**
      * Событие, происходящее при создании окна.
      *

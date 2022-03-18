@@ -17,7 +17,7 @@ android:layout_height = "match_parent">
 	android:textSize = "@dimen/standard_text_size"
 	app:layout_constraintLeft_toLeftOf = "parent"
 	app:layout_constraintRight_toRightOf = "parent"
-	app:layout_constraintTop_toTopOf = "parent"/>
+	app:layout_constraintTop_toTopOf = "parent" />
 
 	<!-- Контейнер для списка с парами. -->
 	<LinearLayout
@@ -29,15 +29,16 @@ android:layout_height = "match_parent">
 	app:layout_constraintLeft_toLeftOf = "parent"
 	app:layout_constraintRight_toRightOf = "parent"
 	app:layout_constraintTop_toBottomOf = "@id/schedule_day_header">
+
 		<ListView
 		android:id = "@+id/schedule_lessons_list"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
 		android:divider = "@color/main_gray"
-		android:dividerHeight="@dimen/lessons_divider_height"
+		android:dividerHeight = "@dimen/lessons_divider_height"
 		android:orientation = "vertical"
 		app:layout_constraintLeft_toLeftOf = "parent"
 		app:layout_constraintRight_toRightOf = "parent"
-		app:layout_constraintTop_toBottomOf = "@id/schedule_day_header"/>
+		app:layout_constraintTop_toBottomOf = "@id/schedule_day_header" />
 	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
