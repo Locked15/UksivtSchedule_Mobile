@@ -51,4 +51,13 @@
 	<string name = "changes_get_exception">Can\'t get changes.\n Error occurred.</string>
 	<string name = "changes_receiving_interrupted">Process interrupted.</string>
 	<string name = "there_is_no_available_changes_file">Can\'t find changes file.</string>
+	<string name = "favorites">Favorites groups</string>
+	<string name = "favorites_header_text">Click on group to move to day selection.</string>
+	<string name = "group_added_to_favorites">Group added to favorites list.</string>
+	<string name = "group_removed_from_favorites_list">Group has been removed from favorites list.</string>
+	<string name = "example_group_name">[Group_Name]</string>
+	<string name = "example_group_course">Course: N.</string>
+	<string name = "example_branch">Branch: [Example_Value].</string>
+	<string name = "example_sub_group">[N].</string>
+	<string name = "course">Course: %d.</string>
 </resources>

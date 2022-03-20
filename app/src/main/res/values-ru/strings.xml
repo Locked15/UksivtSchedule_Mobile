@@ -53,4 +53,13 @@
 	<string name = "changes_get_exception">Не удалось получить замены. \nПроизошла ошибка.</string>
 	<string name = "changes_receiving_interrupted">Процесс остановлен.</string>
 	<string name = "there_is_no_available_changes_file">Файл с заменами не обнаружен.</string>
+	<string name = "favorites">Избранные группы</string>
+	<string name = "favorites_header_text">Нажатие на группу позволит перейти к выбору дня.</string>
+	<string name = "group_added_to_favorites">Группа добавлена в список избранного.</string>
+	<string name = "group_removed_from_favorites_list">Группа была удалена из списка избранного.</string>
+	<string name = "example_group_name">[Название_Группы]</string>
+	<string name = "example_group_course">Курс: N.</string>
+	<string name = "example_branch">Отделение: [Значение_Примера].</string>
+	<string name = "example_sub_group">[N].</string>
+	<string name = "course">Курс: %d.</string>
 </resources>

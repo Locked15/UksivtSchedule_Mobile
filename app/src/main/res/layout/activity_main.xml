@@ -21,7 +21,7 @@ tools:context = ".activities.MainActivity">
 	app:layout_constraintLeft_toLeftOf = "parent"
 	app:layout_constraintRight_toRightOf = "parent"
 	app:layout_constraintStart_toStartOf = "parent"
-	app:layout_constraintTop_toTopOf = "parent"/>
+	app:layout_constraintTop_toTopOf = "parent" />
 	<!-- endregion -->
 
 	<!-- region Область: Список направлений. -->
@@ -32,11 +32,29 @@ tools:context = ".activities.MainActivity">
 	android:fillViewport = "true"
 	app:layout_constraintBottom_toTopOf = "@id/main_footer"
 	app:layout_constraintTop_toBottomOf = "@id/main_header">
+
 		<LinearLayout
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
 		android:orientation = "vertical"
 		android:padding = "10dp">
+			<!-- Избранное. -->
+			<Button
+			android:id = "@+id/favorites"
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "2"
+			android:backgroundTint = "@color/main_gray"
+			android:fontFamily = "georgia"
+			android:onClick = "goToFavoritesList"
+			android:text = "@string/favorites"
+			android:textSize = "@dimen/small_button_text_size" />
+
+			<Space
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight = "1" />
+
 			<!-- Общеобразовательное. -->
 			<Button
 			android:id = "@+id/general_course_button"
@@ -47,12 +65,12 @@ tools:context = ".activities.MainActivity">
 			android:fontFamily = "georgia"
 			android:onClick = "oneOfButtonsAreClicked"
 			android:text = "@string/general_course"
-			android:textSize = "@dimen/standard_button_text_size"/>
+			android:textSize = "@dimen/standard_button_text_size" />
 
 			<Space
 			android:layout_width = "match_parent"
 			android:layout_height = "0dp"
-			android:layout_weight = "1"/>
+			android:layout_weight = "1" />
 
 			<!-- Экономика и ЗИО. -->
 			<Button
@@ -64,12 +82,12 @@ tools:context = ".activities.MainActivity">
 			android:fontFamily = "georgia"
 			android:onClick = "oneOfButtonsAreClicked"
 			android:text = "@string/economy_course"
-			android:textSize = "@dimen/standard_button_text_size"/>
+			android:textSize = "@dimen/standard_button_text_size" />
 
 			<Space
 			android:layout_width = "match_parent"
 			android:layout_height = "0dp"
-			android:layout_weight = "1"/>
+			android:layout_weight = "1" />
 
 			<!-- Право. -->
 			<Button
@@ -81,12 +99,12 @@ tools:context = ".activities.MainActivity">
 			android:fontFamily = "georgia"
 			android:onClick = "oneOfButtonsAreClicked"
 			android:text = "@string/law_course"
-			android:textSize = "@dimen/standard_button_text_size"/>
+			android:textSize = "@dimen/standard_button_text_size" />
 
 			<Space
 			android:layout_width = "match_parent"
 			android:layout_height = "0dp"
-			android:layout_weight = "1"/>
+			android:layout_weight = "1" />
 
 			<!-- Вычислительная техника. -->
 			<Button
@@ -98,12 +116,12 @@ tools:context = ".activities.MainActivity">
 			android:fontFamily = "georgia"
 			android:onClick = "oneOfButtonsAreClicked"
 			android:text = "@string/technical_course"
-			android:textSize = "@dimen/standard_button_text_size"/>
+			android:textSize = "@dimen/standard_button_text_size" />
 
 			<Space
 			android:layout_width = "match_parent"
 			android:layout_height = "0dp"
-			android:layout_weight = "1"/>
+			android:layout_weight = "1" />
 
 			<!-- Информатика и Программирование. -->
 			<Button
@@ -115,7 +133,7 @@ tools:context = ".activities.MainActivity">
 			android:fontFamily = "georgia"
 			android:onClick = "oneOfButtonsAreClicked"
 			android:text = "@string/informatics_course"
-			android:textSize = "@dimen/standard_button_text_size"/>
+			android:textSize = "@dimen/standard_button_text_size" />
 		</LinearLayout>
 	</ScrollView>
 	<!-- endregion -->
@@ -131,6 +149,6 @@ tools:context = ".activities.MainActivity">
 	android:textSize = "@dimen/standard_text_size"
 	app:layout_constraintBottom_toBottomOf = "parent"
 	app:layout_constraintLeft_toLeftOf = "parent"
-	app:layout_constraintRight_toRightOf = "parent"/>
+	app:layout_constraintRight_toRightOf = "parent" />
 	<!-- endregion -->
 </androidx.constraintlayout.widget.ConstraintLayout>

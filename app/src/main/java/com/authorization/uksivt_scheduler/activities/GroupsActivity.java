@@ -7,12 +7,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Space;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.authorization.uksivt_scheduler.R;
 import com.authorization.uksivt_scheduler.data_getter.StandardScheduler;
+import com.authorization.uksivt_scheduler.user_data.Group;
+import com.authorization.uksivt_scheduler.user_data.UserData;
 
 import java.util.List;
 
@@ -112,9 +115,30 @@ public class GroupsActivity extends AppCompatActivity
 				}
 			});
 
-			//Почему-то, если задавать размер любым другим способом, ...
-			//... текст просто исчезает, так что выбора нет:
 			button.setTextSize(48);
+			button.setOnLongClickListener(v ->
+			{
+				Group newFavorite = new Group(course, subFolder, button.getText().toString());
+				Integer index = UserData.checkToContain(newFavorite);
+
+				if (index == -1)
+				{
+					UserData.FavoritesGroups.add(new Group(course, subFolder, button.getText().toString()));
+					UserData.saveFavoritesListToFile();
+
+					Toast.makeText(this, getString(R.string.group_added_to_favorites), Toast.LENGTH_SHORT).show();
+				}
+
+				else
+				{
+					UserData.FavoritesGroups.remove((int)index);
+					UserData.saveFavoritesListToFile();
+
+					Toast.makeText(this, getString(R.string.group_removed_from_favorites_list), Toast.LENGTH_SHORT).show();
+				}
+
+				return false;
+			});
 
 			layout.addView(button);
 

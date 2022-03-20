@@ -1,0 +1,74 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android = "http://schemas.android.com/apk/res/android"
+xmlns:app = "http://schemas.android.com/apk/res-auto"
+android:layout_width = "match_parent"
+android:layout_height = "wrap_content"
+android:layout_margin = "2.5dp"
+android:background = "@color/list_end_color"
+android:clickable = "true"
+android:descendantFocusability = "blocksDescendants">
+	<!-- Название группы. -->
+	<TextView
+	android:id = "@+id/favorite_element_header"
+	android:layout_width = "0dp"
+	android:layout_height = "wrap_content"
+	android:layout_marginBottom = "7.5dp"
+	android:clickable = "false"
+	android:fontFamily = "georgia"
+	android:gravity = "center"
+	android:text = "@string/example_group_name"
+	android:textSize = "@dimen/standard_text_size"
+	app:layout_constraintBottom_toTopOf = "@id/favorite_element_branch"
+	app:layout_constraintHorizontal_weight = "3"
+	app:layout_constraintLeft_toRightOf = "@id/favorite_element_course"
+	app:layout_constraintRight_toLeftOf = "@id/favorite_element_sub_group"
+	app:layout_constraintTop_toTopOf = "parent" />
+
+	<!-- Курс группы. -->
+	<TextView
+	android:id = "@+id/favorite_element_course"
+	android:layout_width = "0dp"
+	android:layout_height = "wrap_content"
+	android:clickable = "false"
+	android:fontFamily = "georgia"
+	android:gravity = "center"
+	android:text = "@string/example_group_course"
+	android:textSize = "24sp"
+	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintHorizontal_weight = "1"
+	app:layout_constraintLeft_toLeftOf = "parent"
+	app:layout_constraintRight_toLeftOf = "@id/favorite_element_header"
+	app:layout_constraintTop_toTopOf = "parent" />
+
+	<!-- Отделение группы. -->
+	<TextView
+	android:id = "@+id/favorite_element_branch"
+	android:layout_width = "0dp"
+	android:layout_height = "wrap_content"
+	android:clickable = "false"
+	android:gravity = "center"
+	android:text = "@string/example_branch"
+	android:textSize = "@dimen/small_text_size"
+	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintHorizontal_weight = "3"
+	app:layout_constraintLeft_toRightOf = "@id/favorite_element_course"
+	app:layout_constraintRight_toLeftOf = "@id/favorite_element_sub_group"
+	app:layout_constraintTop_toBottomOf = "@id/favorite_element_header" />
+
+	<!-- Принадлежность группы (П, КСК, ЗИО). -->
+	<TextView
+	android:id = "@+id/favorite_element_sub_group"
+	android:layout_width = "0dp"
+	android:layout_height = "wrap_content"
+	android:clickable = "false"
+	android:gravity = "center"
+	android:text = "@string/example_sub_group"
+	android:textSize = "26sp"
+	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintHorizontal_weight = "1"
+	app:layout_constraintLeft_toRightOf = "@id/favorite_element_header"
+	app:layout_constraintRight_toRightOf = "parent"
+	app:layout_constraintTop_toTopOf = "parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

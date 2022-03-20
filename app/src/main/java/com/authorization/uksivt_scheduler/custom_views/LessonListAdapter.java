@@ -25,6 +25,7 @@ import java.util.Locale;
 public class LessonListAdapter extends BaseAdapter
 {
 	//region Область: Поля класса.
+
 	/**
 	 * Поле, содержащее индекс дня для вычисления времени проведения пар.
 	 */

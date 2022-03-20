@@ -22,10 +22,10 @@ package = "com.authorization.uksivt_scheduler">
 			</intent-filter>
 		</activity>
 
+		<activity android:name = ".activities.FavoritesActivity"/>
+
 		<activity android:name = ".activities.SubFoldersActivity"/>
-
 		<activity android:name = ".activities.GroupsActivity"/>
-
 		<activity android:name = ".activities.DaySelectorActivity"/>
 
 		<activity android:name = ".activities.FinalScheduleActivity"/>

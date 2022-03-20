@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.authorization.uksivt_scheduler.R;
 import com.authorization.uksivt_scheduler.data_getter.ScheduleApiConnector;
+import com.authorization.uksivt_scheduler.user_data.UserData;
 
 import org.joda.time.DateTime;
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity
 		// Элемент оптимизации использования API:
 		new Thread(() ->
 		{
+			UserData.initializeUserData(this);
+
 			try
 			{
 				new ScheduleApiConnector(DateTime.now().dayOfWeek().get() - 1, "19П-3").getChanges();
@@ -52,6 +55,18 @@ public class MainActivity extends AppCompatActivity
 	//endregion
 
 	//region Область: Обработчики событий.
+
+	/**
+	 * Событие, происходящее при нажатии на кнопку избранных групп.
+	 *
+	 * @param sender Объект, вызвавший событие.
+	 */
+	public void goToFavoritesList(View sender)
+	{
+		Intent newWindow = new Intent(this, FavoritesActivity.class);
+
+		startActivity(newWindow);
+	}
 
 	/**
 	 * Событие, происходящее при нажатии на одну из кнопок с курсом.
