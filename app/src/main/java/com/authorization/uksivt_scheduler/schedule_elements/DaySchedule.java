@@ -92,7 +92,7 @@ public class DaySchedule
 		{
 			Integer lessonIndex = change.getNumber();
 
-			if (change.getName().toLowerCase(Locale.ROOT).equals("нет"))
+			if (change.getName() != null && change.getName().toLowerCase(Locale.ROOT).equals("нет"))
 			{
 				change.setName(null);
 			}
