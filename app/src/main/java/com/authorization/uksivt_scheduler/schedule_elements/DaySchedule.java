@@ -24,11 +24,14 @@ public class DaySchedule
 	public ArrayList<Lesson> lessons;
 	//endregion
 
-	//region Область: Конструктор класса.
+	//region Область: Конструкторы класса.
 
 	/**
-	 * Конструктор класса по умолчанию.
+	 * Конструктор класса.
+	 * <br/>
+	 * Нужен для работы сериализатора, поэтому предупреждение об отсутствии использований подавляется.
 	 */
+	@SuppressWarnings("unused")
 	public DaySchedule()
 	{
 

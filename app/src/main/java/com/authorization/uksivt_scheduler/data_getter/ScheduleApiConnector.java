@@ -3,6 +3,7 @@ package com.authorization.uksivt_scheduler.data_getter;
 import com.authorization.uksivt_scheduler.change_elements.ChangesOfDay;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import org.apache.commons.io.IOUtils;
 
@@ -109,8 +110,7 @@ public class ScheduleApiConnector
 		baseUrl, pathToDay, changesController, daySelector, dayInd, groupSelector, groupName)).openConnection();
 		String result = IOUtils.toString(connection.getInputStream(), Charset.defaultCharset());
 
-		ObjectMapper serializer = new ObjectMapper();
-		serializer.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+		ObjectMapper serializer = JsonMapper.builder().enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES).build();
 
 		return serializer.readValue(result, ChangesOfDay.class);
 	}
