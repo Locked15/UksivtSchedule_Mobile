@@ -1,5 +1,8 @@
 package com.authorization.uksivt_scheduler.schedule_elements;
 
+import org.joda.time.DateTime;
+
+
 /**
  * Класс, предоставляющий логику для одной пары.
  */
@@ -142,7 +145,10 @@ public class Lesson implements Comparable<Lesson>
 
 	/**
 	 * Конструктор класса по умолчанию.
+	 * <br/>
+	 * Нужен для сериализации, поэтому установлено подавление предупреждения о неиспользовании.
 	 */
+	@SuppressWarnings("unused")
 	public Lesson()
 	{
 
@@ -176,24 +182,6 @@ public class Lesson implements Comparable<Lesson>
 		this.teacher = teacher;
 		this.place = place;
 	}
-
-	/**
-	 * Конструктор класса.
-	 *
-	 * @param number        Номер пары.
-	 * @param name          Название предмета.
-	 * @param teacher       Преподаватель.
-	 * @param place         Место проведения пары.
-	 * @param lessonChanged Изменялась ли пара.
-	 */
-	public Lesson(Integer number, String name, String teacher, String place, Boolean lessonChanged)
-	{
-		this.number = number;
-		this.name = name;
-		this.teacher = teacher;
-		this.place = place;
-		this.lessonChanged = lessonChanged;
-	}
 	//endregion
 
 	//region Область: Реализация интерфейса.
@@ -221,5 +209,169 @@ public class Lesson implements Comparable<Lesson>
 
 		return -1;
 	}
+	//endregion
+
+	//region Область: Методы.
+
+	/**
+	 * Метод для расчета времени первой половины пары.
+	 *
+	 * @param dayInd Индекс дня.
+	 * @param groupName Название группы.
+	 * @return Строковое представление времени первой половины пары.
+	 */
+	public String calculateFirstLessonPartTime(Integer dayInd, String groupName)
+	{
+		//Обычные дни.
+		if (dayInd != 5)
+		{
+			switch (number)
+			{
+				case 0:
+					return "7:50 — 9:20";
+
+				case 1:
+					return "9:30 — 10:15";
+
+				case 2:
+					if (checkToFirstCourse(groupName))
+					{
+						return "11:15 — 12:00";
+					}
+
+					else if (checkToSecondCourse(groupName))
+					{
+						return "11:15 — 12:00";
+					}
+
+					else
+					{
+						return "12:00 — 12:45";
+					}
+
+				case 3:
+					return "13:35 — 14:20";
+
+				case 4:
+					return dayInd == 2 ? "16:10 — 17:30" : "15:20 — 16:50";
+
+				case 5:
+					return dayInd == 2 ? "17:40 — 18:50" : "17:00 — 18:20";
+
+				default:
+					return dayInd == 2 ? "19:00 — 20:10" : "18:30 — 19:50";
+			}
+		}
+
+		//Суббота.
+		else
+		{
+			return switch (number)
+			{
+				case 0 -> "8:00 — 9:20";
+
+				case 1 -> "9:30 — 10:50";
+
+				case 2 -> "11:00 — 12:20";
+
+				case 3 -> "12:30 — 13:50";
+
+				case 4 -> "14:00 — 15:20";
+
+				case 5 -> "15:30 — 16:50";
+
+				default -> "17:00 — 18:20";
+			};
+		}
+	}
+
+	/**
+	 * Метод для расчета времени второй половины пары, если это время существует.
+	 *
+	 * @param dayInd Индекс дня.
+	 * @param groupName Название группы.
+	 * @return Строковое представление времени второй половины пары, если оно существует.
+	 */
+	public String calculateSecondLessonPartTimeIfItExist(Integer dayInd, String groupName)
+	{
+		if (dayInd != 5)
+		{
+			switch (number)
+			{
+				case 1:
+					return "10:20 — 11:05";
+
+				case 2:
+					if (checkToFirstCourse(groupName))
+					{
+						return "12:45 — 13:30";
+					}
+
+					else if (checkToSecondCourse(groupName))
+					{
+						return "12:05 — 12:25";
+					}
+
+					else
+					{
+						return "12:45 — 13:30";
+					}
+
+				case 3:
+					return "14:25 — 15:10";
+			}
+		}
+
+		return "";
+	}
+
+	// region Подобласть: Группа методов на проверку принадлежности.
+
+	/**
+	 * Метод для проверки группы на принадлежность к первому курсу.
+	 *
+	 * @param groupName Название группы.
+	 * @return Их принадлежность к первому курсу.
+	 */
+	private Boolean checkToFirstCourse(String groupName)
+	{
+		DateTime currentTime = DateTime.now();
+
+		return checkStartDateAndGroupName(groupName, currentTime);
+	}
+
+	/**
+	 * Метод для проверки группы на принадлежность ко второму курсу.
+	 *
+	 * @param groupName Название группы.
+	 * @return Их принадлежность ко второму курсу.
+	 */
+	private Boolean checkToSecondCourse(String groupName)
+	{
+		DateTime currentTime = DateTime.now();
+		currentTime = currentTime.plusYears(-1);
+
+		return checkStartDateAndGroupName(groupName, currentTime);
+	}
+
+	/**
+	 * Вынесенный метод для проверки групп на принадлежность к какому-либо курсу.
+	 *
+	 * @param groupName Название группы.
+	 * @param currentTime Текущее время (определяет то, на какую принадлежность нужно проверять).
+	 *
+	 * @return Значение, отвечающее за принадлежность к тому или иному курсу.
+	 */
+	private Boolean checkStartDateAndGroupName(String groupName, DateTime currentTime)
+	{
+		if (currentTime.getMonthOfYear() < 9)
+		{
+			currentTime = currentTime.plusYears(-1);
+		}
+
+		String yearPath = Integer.toString(currentTime.getYear() % 100);
+		return groupName.contains(yearPath);
+	}
+	//endregion
 	//endregion
 }

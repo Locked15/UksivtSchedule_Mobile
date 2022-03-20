@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.authorization.uksivt_scheduler.R;
 import com.authorization.uksivt_scheduler.schedule_elements.DaySchedule;
+import com.authorization.uksivt_scheduler.schedule_elements.Days;
 import com.authorization.uksivt_scheduler.schedule_elements.Lesson;
 
 import java.util.ArrayList;
@@ -24,6 +25,16 @@ import java.util.Locale;
 public class LessonListAdapter extends BaseAdapter
 {
 	//region Область: Поля класса.
+	/**
+	 * Поле, содержащее индекс дня для вычисления времени проведения пар.
+	 */
+	private final Integer dayIndex;
+
+	/**
+	 * Поле, содержащее название нужной группы.
+	 */
+	private final String groupName;
+
 	/**
 	 * Поле, содержащее объект, нужный для работы нестандартного списка.
 	 */
@@ -40,25 +51,15 @@ public class LessonListAdapter extends BaseAdapter
 	/**
 	 * Конструктор класса.
 	 *
-	 * @param context Контекст, в котором создается ListView.
-	 * @param lessons Список пар для заполнения таблицы.
-	 */
-	public LessonListAdapter(Context context, ArrayList<Lesson> lessons)
-	{
-		this.lessons = lessons;
-
-		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
-
-	/**
-	 * Конструктор класса.
-	 *
 	 * @param context  Контекст, в котором создается ListView.
+	 * @param group Название группы.
 	 * @param schedule Полное расписание на день.
 	 */
-	public LessonListAdapter(Context context, DaySchedule schedule)
+	public LessonListAdapter(Context context, String group, DaySchedule schedule)
 	{
-		this.lessons = schedule.lessons;
+		dayIndex = Days.getIndexByValue(schedule.day);
+		groupName = group;
+		lessons = schedule.lessons;
 
 		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
@@ -132,6 +133,8 @@ public class LessonListAdapter extends BaseAdapter
 			holder.name = toReturn.findViewById(R.id.template_name);
 			holder.teacher = toReturn.findViewById(R.id.template_teacher);
 			holder.place = toReturn.findViewById(R.id.template_place);
+			holder.firstPartLessonTime = toReturn.findViewById(R.id.template_time_of_first_part_of_lesson);
+			holder.secondPartLessonTime = toReturn.findViewById(R.id.template_time_of_second_part_of_lesson);
 			//endregion
 
 			toReturn.setTag(holder);
@@ -148,6 +151,8 @@ public class LessonListAdapter extends BaseAdapter
 		holder.name.setText(data.getName());
 		holder.teacher.setText(data.getTeacher());
 		holder.place.setText(data.getPlace());
+		holder.firstPartLessonTime.setText(data.calculateFirstLessonPartTime(dayIndex, groupName));
+		holder.secondPartLessonTime.setText(data.calculateSecondLessonPartTimeIfItExist(dayIndex, groupName));
 		//endregion
 
 		return toReturn;
@@ -185,6 +190,16 @@ public class LessonListAdapter extends BaseAdapter
 		 * Поле, содержащее место проведения пары.
 		 */
 		private TextView place;
+
+		/**
+		 * Поле, содержащее время первой половины пары.
+		 */
+		private TextView firstPartLessonTime;
+
+		/**
+		 * Поле, содержащее время второй половины пары.
+		 */
+		private TextView secondPartLessonTime;
 	}
 	//endregion
 }

@@ -201,7 +201,7 @@ public class FinalScheduleActivity extends AppCompatActivity
 		//Удаляем все пустые пары (почти как LINQ!):
 		schedule.lessons.removeIf(lesson -> lesson.getName() == null);
 
-		LessonListAdapter adapter = new LessonListAdapter(this, schedule);
+		LessonListAdapter adapter = new LessonListAdapter(this, getIntent().getStringExtra("group"), schedule);
 		lessonsList.setAdapter(adapter);
 	}
 

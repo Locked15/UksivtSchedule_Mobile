@@ -17,11 +17,11 @@ android:background = "@drawable/lesson_element_is_selected">
 	android:fontFamily = "georgia"
 	android:gravity = "center"
 	android:textSize = "@dimen/small_text_size"
-	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintBottom_toTopOf = "@id/template_time_of_first_part_of_lesson"
 	app:layout_constraintHorizontal_weight = "1"
 	app:layout_constraintLeft_toLeftOf = "parent"
 	app:layout_constraintRight_toLeftOf = "@id/template_name"
-	app:layout_constraintTop_toTopOf = "parent"/>
+	app:layout_constraintTop_toTopOf = "parent" />
 
 	<!-- Название пары. -->
 	<TextView
@@ -32,11 +32,11 @@ android:background = "@drawable/lesson_element_is_selected">
 	android:fontFamily = "georgia"
 	android:gravity = "center"
 	android:textSize = "@dimen/small_text_size"
-	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintBottom_toBottomOf = "@id/template_number"
 	app:layout_constraintHorizontal_weight = "4"
 	app:layout_constraintLeft_toRightOf = "@id/template_number"
 	app:layout_constraintRight_toLeftOf = "@id/template_teacher"
-	app:layout_constraintTop_toTopOf = "parent"/>
+	app:layout_constraintTop_toTopOf = "@+id/template_number" />
 
 	<!-- Преподаватель. -->
 	<TextView
@@ -47,11 +47,11 @@ android:background = "@drawable/lesson_element_is_selected">
 	android:fontFamily = "georgia"
 	android:gravity = "center"
 	android:textSize = "@dimen/small_text_size"
-	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintBottom_toBottomOf = "@+id/template_number"
 	app:layout_constraintHorizontal_weight = "3"
 	app:layout_constraintLeft_toRightOf = "@id/template_name"
 	app:layout_constraintRight_toLeftOf = "@id/template_place"
-	app:layout_constraintTop_toTopOf = "parent"/>
+	app:layout_constraintTop_toTopOf = "@+id/template_number" />
 
 	<!-- Место проведения. -->
 	<TextView
@@ -62,9 +62,39 @@ android:background = "@drawable/lesson_element_is_selected">
 	android:fontFamily = "georgia"
 	android:gravity = "center"
 	android:textSize = "@dimen/small_text_size"
-	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintBottom_toBottomOf = "@+id/template_number"
 	app:layout_constraintHorizontal_weight = "2"
 	app:layout_constraintLeft_toRightOf = "@id/template_teacher"
 	app:layout_constraintRight_toRightOf = "parent"
-	app:layout_constraintTop_toTopOf = "parent"/>
+	app:layout_constraintTop_toTopOf = "@+id/template_number" />
+
+	<!-- Время 1 половины пары. -->
+	<TextView
+	android:id = "@+id/template_time_of_first_part_of_lesson"
+	android:layout_width = "0dp"
+	android:layout_height = "match_parent"
+	android:layout_margin = "2.5dp"
+	android:fontFamily = "georgia"
+	android:gravity = "center"
+	android:textSize = "22sp"
+	app:layout_constraintBottom_toBottomOf = "parent"
+	app:layout_constraintHorizontal_weight = "1"
+	app:layout_constraintLeft_toLeftOf = "parent"
+	app:layout_constraintRight_toLeftOf = "@id/template_time_of_second_part_of_lesson"
+	app:layout_constraintTop_toBottomOf = "@id/template_number" />
+
+	<!-- Время 2 половины пары. -->
+	<TextView
+	android:id = "@+id/template_time_of_second_part_of_lesson"
+	android:layout_width = "0dp"
+	android:layout_height = "match_parent"
+	android:layout_margin = "2.5dp"
+	android:fontFamily = "georgia"
+	android:gravity = "center"
+	android:textSize = "22sp"
+	app:layout_constraintBottom_toBottomOf = "@id/template_time_of_first_part_of_lesson"
+	app:layout_constraintHorizontal_weight = "1"
+	app:layout_constraintLeft_toRightOf = "@id/template_time_of_first_part_of_lesson"
+	app:layout_constraintRight_toRightOf = "parent"
+	app:layout_constraintTop_toTopOf = "@id/template_time_of_first_part_of_lesson" />
 </androidx.constraintlayout.widget.ConstraintLayout>
