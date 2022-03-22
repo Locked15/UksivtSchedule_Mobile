@@ -59,5 +59,6 @@
 	<string name = "example_group_course">Course: N.</string>
 	<string name = "example_branch">Branch: [Example_Value].</string>
 	<string name = "example_sub_group">[N].</string>
-	<string name = "course">Course: %d.</string>
+	<string name = "course">Course: %d</string>
+	<string name = "group_type">Type: %s</string>
 </resources>

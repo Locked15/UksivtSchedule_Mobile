@@ -18,6 +18,13 @@ import java.util.Hashtable;
 
 /**
  * Класс, представляющий логику для "activity_day_selector".
+ * <br/> <br/>
+ * Обязательные передаваемые данные:
+ * <ol>
+ *     <li>"folder" — Отделение обучения;</li>
+ *     <li>"subFolder" — Тип группы;</li>
+ *     <li>"group" — Название группы.</li>
+ * </ol>
  */
 public class DaySelectorActivity extends AppCompatActivity
 {

@@ -27,14 +27,14 @@ public class UserData
 	//region Область: Поля.
 
 	/**
-	 * Поле, содержащее путь к файлу с избранными группами.
-	 */
-	public static String fileName;
-
-	/**
 	 * Список с избранными группами.
 	 */
 	public static List<Group> FavoritesGroups;
+
+	/**
+	 * Поле, содержащее путь к файлу с избранными группами.
+	 */
+	private static String fileName;
 	//endregion
 
 	//region Область: Конструкторы.

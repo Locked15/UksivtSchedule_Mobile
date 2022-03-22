@@ -61,5 +61,6 @@
 	<string name = "example_group_course">Курс: N.</string>
 	<string name = "example_branch">Отделение: [Значение_Примера].</string>
 	<string name = "example_sub_group">[N].</string>
-	<string name = "course">Курс: %d.</string>
+	<string name = "course">Курс: %d</string>
+	<string name = "group_type">Тип: %s</string>
 </resources>

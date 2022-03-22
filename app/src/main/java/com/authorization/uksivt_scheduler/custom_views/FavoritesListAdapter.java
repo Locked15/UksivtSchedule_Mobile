@@ -7,7 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.authorization.uksivt_scheduler.R;
+import com.authorization.uksivt_scheduler.interfaces.FavoriteGroupClickListener;
 import com.authorization.uksivt_scheduler.user_data.Group;
 
 import java.util.List;
@@ -19,6 +22,13 @@ import java.util.List;
 public class FavoritesListAdapter extends BaseAdapter
 {
 	//region Область: Поля.
+
+	/**
+	 * Поле, содержащее любой класс, реализовавший интерфейс.
+	 * <br/>
+	 * Нужно для установки обработчиков событий на нажатия по элементам списка данного адаптера.
+	 */
+	public FavoriteGroupClickListener Listener;
 
 	/**
 	 * Поле, содержащее объект, нужный для заполнения элементов управления данными.
@@ -36,13 +46,15 @@ public class FavoritesListAdapter extends BaseAdapter
 	/**
 	 * Конструктор класса.
 	 *
-	 * @param context Контекст приложения.
-	 * @param groups  Список групп.
+	 * @param context  Контекст приложения.
+	 * @param groups   Список групп.
+	 * @param listener Прослушиватель событий нажатий на элементы списка.
 	 */
-	public FavoritesListAdapter(Context context, List<Group> groups)
+	public FavoritesListAdapter(Context context, List<Group> groups, FavoriteGroupClickListener listener)
 	{
 		this.groups = groups;
 		inflater = LayoutInflater.from(context);
+		Listener = listener;
 	}
 	//endregion
 
@@ -106,6 +118,7 @@ public class FavoritesListAdapter extends BaseAdapter
 			toReturn = inflater.inflate(R.layout.favorite_element, parent, false);
 
 			//region Подобласть: Инициализация значений "holder".
+			holder.background = toReturn.findViewById(R.id.favorite_element_background);
 			holder.favoriteName = toReturn.findViewById(R.id.favorite_element_header);
 			holder.favoriteCourse = toReturn.findViewById(R.id.favorite_element_course);
 			holder.favoriteBranch = toReturn.findViewById(R.id.favorite_element_branch);
@@ -119,12 +132,22 @@ public class FavoritesListAdapter extends BaseAdapter
 		data = groups.get(position);
 
 		//region Подобласть: Установка значений полей.
+		holder.favoriteCourse.setText(String.format(inflater.getContext().getString(R.string.course), data.calculateCourse()));
+		holder.favoriteSubGroup.setText(String.format(inflater.getContext().getString(R.string.group_type), data.SubGroup));
+
 		holder.favoriteName.setText(data.GroupName);
 		holder.favoriteBranch.setText(data.getPrettyBranchName(toReturn.getContext()));
-		holder.favoriteSubGroup.setText(data.SubGroup);
 
-		holder.favoriteCourse.setText(String.format(inflater.getContext().getString(R.string.course),
-		data.calculateCourse()));
+		if (Listener != null)
+		{
+			holder.background.setOnClickListener((Group) -> Listener.favoriteGroupClicked(data));
+			holder.background.setOnLongClickListener((Group) ->
+			{
+				Listener.favoriteGroupLongClick(data);
+
+				return false;
+			});
+		}
 		//endregion
 
 		return toReturn;
@@ -138,6 +161,11 @@ public class FavoritesListAdapter extends BaseAdapter
 	 */
 	private static class ViewHolder
 	{
+		/**
+		 * Задний фон элемента списка.
+		 */
+		private ConstraintLayout background;
+
 		/**
 		 * Название избранной группы.
 		 */

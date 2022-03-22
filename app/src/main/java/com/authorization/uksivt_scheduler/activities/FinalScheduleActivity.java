@@ -30,6 +30,14 @@ import java.util.TimeZone;
 
 /**
  * Класс, определяющий логику для "activity_schedule_viewer".
+ * <br/> <br/>
+ * Обязательные передаваемые параметры:
+ * <ol>
+ *     <li>"folder" — Отделение обучения;</li>
+ *     <li>"subFolder" — Тип группы;</li>
+ *     <li>"group" — Название группы;</li>
+ *     <li>"day" — Название дня.</li>
+ * </ol>
  */
 public class FinalScheduleActivity extends AppCompatActivity
 {

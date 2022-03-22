@@ -22,6 +22,12 @@ import java.util.List;
 
 /**
  * Класс, содержащий логику для работы с "activity_groups".
+ * <br/> <br/>
+ * Обязательные передаваемые данные:
+ * <ol>
+ *     <li>"course_name" — Отделение обучения;</li>
+ *     <li>"subFolder_name" — Тип группы.</li>
+ * </ol>
  */
 public class GroupsActivity extends AppCompatActivity
 {
